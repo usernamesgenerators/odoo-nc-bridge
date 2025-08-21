@@ -1,12 +1,23 @@
 {
   "name": "odoo-nc-bridge",
   "version": "1.0.0",
+  "description": "API bridge for checking domain availability with Namecheap API and supporting multiple extensions",
   "main": "index.js",
-  "scripts": { 
-    "start": "node index.js" 
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "dependencies": {
     "express": "^4.18.0",
     "fast-xml-parser": "^4.2.5"
-  }
+  },
+  "keywords": [
+    "domain",
+    "namecheap",
+    "api",
+    "bridge",
+    "availability"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
 }
