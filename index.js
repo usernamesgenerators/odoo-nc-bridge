@@ -1,13 +1,14 @@
-// index.js – صحيح ويعمل مع Namecheap Sandbox
+// index.js  – الإصدار النهائي الصحيح
 const express = require('express');
 const fetch  = require('node-fetch');
 const app    = express();
 const PORT   = process.env.PORT || 3000;
 
-// 1) بيانات الاعتماد من حساب Namecheap Sandbox
+// 1) بيانات حساب Namecheap Sandbox
 const API_KEY   = '3ed3eb097269443481bb9532a4660bf8';
 const USERNAME  = 'Remdane';
-const CLIENT_IP = '44.229.227.142';   // أي IP من: 44.229.227.142 / 54.188.71.94 / 52.13.128.108
+// أي عنوان من عناوين Render الثابتة
+const CLIENT_IP = '44.229.227.142';   // أو 54.188.71.94  أو 52.13.128.108
 
 // 2) رابط الإحالة
 const AFF_LINK = 'https://namecheap.pxf.io/c/3481273/386170/5618';
@@ -15,7 +16,7 @@ const AFF_LINK = 'https://namecheap.pxf.io/c/3481273/386170/5618';
 app.use(express.json());
 app.use(express.static('public'));
 
-// 3) endpoint للتحقق من توفر النطاق
+// 3) Endpoint للتحقق من توفر النطاق
 app.get('/api/check-domain/:name', async (req, res) => {
   const domain = `${req.params.name}.com`;
   const url =
