@@ -1,22 +1,16 @@
-// index.js  – الإصدار النهائي الصحيح
+// index.js – works on Node 18+ (Render default)
 const express = require('express');
-const fetch  = require('node-fetch');
 const app    = express();
 const PORT   = process.env.PORT || 3000;
 
-// 1) بيانات حساب Namecheap Sandbox
 const API_KEY   = '3ed3eb097269443481bb9532a4660bf8';
 const USERNAME  = 'Remdane';
-// أي عنوان من عناوين Render الثابتة
-const CLIENT_IP = '44.229.227.142';   // أو 54.188.71.94  أو 52.13.128.108
-
-// 2) رابط الإحالة
-const AFF_LINK = 'https://namecheap.pxf.io/c/3481273/386170/5618';
+const CLIENT_IP = '44.229.227.142';
+const AFF_LINK  = 'https://namecheap.pxf.io/c/3481273/386170/5618';
 
 app.use(express.json());
 app.use(express.static('public'));
 
-// 3) Endpoint للتحقق من توفر النطاق
 app.get('/api/check-domain/:name', async (req, res) => {
   const domain = `${req.params.name}.com`;
   const url =
@@ -37,6 +31,4 @@ app.get('/api/check-domain/:name', async (req, res) => {
   }
 });
 
-// 4) روت صحيح للتشغيل
-app.get('/', (req, res) => res.send('odoo-nc-bridge is running'));
 app.listen(PORT, () => console.log(`Server on ${PORT}`));
